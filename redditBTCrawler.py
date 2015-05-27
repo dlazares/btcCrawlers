@@ -29,7 +29,7 @@ def createDataset(r,access_information, subreddits, startDate=(datetime.datetime
     """
     access_information = access_information
     # initialize database and Table
-    dbFile= 'btcDb.db'
+    dbFile= 'btcRedDb.db'
     conn = sqlite3.connect(dbFile)
     cursor = conn.cursor()
     tableNameWithParams= "usernames(username TEXT, btcAddress TEXT, commentID TEXT, daDate TEXT)"
@@ -236,13 +236,13 @@ def addressInText(text):
 def login(accessInfoKey):
     r = praw.Reddit('redditBTCrawler' 'https://insertyoursitehere.com')
     # input your Oauth app info, leave the redirect_uri as is
-    r.set_oauth_app_info(client_id='gUxis5N-zF3hFg',
-                             client_secret='gqmfghsxKVAtymXPkPm1zGdpyQA',
+    r.set_oauth_app_info(client_id='yourClientID',
+                             client_secret='yourClientSecret',
                              redirect_uri='http://127.0.0.1:65010/'
                                           'authorize_callback')
     
     scope= ['read','identity']
-    url = r.get_authorize_url('uniquelycreatedkey', scope, True)
+    url = r.get_authorize_url('enter any random uniquelycreatedkey', scope, True)
     webbrowser.open(url)
     access_information = r.get_access_information(accessInfoKey)
     return [r,access_information]
@@ -255,7 +255,7 @@ if __name__ == "__main__":
     endDate= str(141231010000)
     fineScale = int(8) 
     #take key from http header
-    accessInfoKey= 'ZflOWLm2IzqP_d7zwiESBxjnV1k' 
+    accessInfoKey= 'put the part after &code= ' 
     # initialize reddit object
     loginList=login(accessInfoKey)
     r=loginList[0]

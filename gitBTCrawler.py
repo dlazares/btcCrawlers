@@ -6,7 +6,7 @@ import string
 import time
 
 def getAllUsersAddresses():
-	token='f1171cdb3c9795fa27981c3dc5161bdad4019f91'
+	token='yourTokenHere'
 	gh= github3.login(token=token)
 	users= gh.all_users()
 	userCount=0
